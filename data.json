@@ -1,0 +1,65 @@
+{
+  "settings": {
+    "adminPin": "1234",
+    "businessName": "Dienstplan",
+    "employees": [
+      "Kevin",
+      "Daniel",
+      "Anita",
+      "Dennis",
+      "Marc",
+      "Christian Gaas",
+      "Marco",
+      "Ali",
+      "Bianca",
+      "Kevin Leicht"
+    ],
+    "positions": [
+      "Counter",
+      "Service 1",
+      "Service 2",
+      "Service 3",
+      "Service 4",
+      "Service 5",
+      "Kueche 1",
+      "Reinigung"
+    ]
+  },
+  "availability": {
+    "2026-05": {
+      "Kevin": {
+        "2026-04-30": {
+          "status": "yes",
+          "from": "",
+          "to": "",
+          "note": ""
+        },
+        "2026-05-02": {
+          "status": "yes",
+          "from": "",
+          "to": "",
+          "note": ""
+        },
+        "2026-05-03": {
+          "status": "yes",
+          "from": "",
+          "to": "",
+          "note": ""
+        },
+        "2026-05-09": {
+          "status": "yes",
+          "from": "",
+          "to": "",
+          "note": ""
+        },
+        "2026-05-15": {
+          "status": "yes",
+          "from": "",
+          "to": "",
+          "note": ""
+        }
+      }
+    }
+  },
+  "schedules": {}
+}
