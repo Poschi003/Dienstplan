@@ -2,7 +2,8 @@
   "name": "dienstplan-app",
   "version": "1.0.0",
   "private": true,
-  "description": "Dienstplan App",
+  "description": "Einfache Dienstplan-App fuer Mitarbeiter-Verfuegbarkeit und veroeffentlichte Dienstplaene.",
+  "main": "server.cjs",
   "engines": {
     "node": ">=18"
   }

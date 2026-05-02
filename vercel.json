@@ -2,6 +2,10 @@
   "version": 2,
   "builds": [
     {
+      "src": "server.cjs",
+      "use": "@vercel/node"
+    },
+    {
       "src": "api/**/*.js",
       "use": "@vercel/node"
     },
@@ -16,12 +20,16 @@
       "dest": "/api/index.js"
     },
     {
+      "src": "/favicon.ico",
+      "dest": "/server.cjs"
+    },
+    {
       "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|svg|webp))",
       "dest": "/public/$1"
     },
     {
       "src": "/",
-      "dest": "/public/index.html"
+      "dest": "/server.cjs"
     }
   ]
 }
