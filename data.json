@@ -1,65 +1,106 @@
-{
-  "settings": {
-    "adminPin": "1234",
-    "businessName": "Dienstplan",
-    "employees": [
-      "Kevin",
-      "Daniel",
-      "Anita",
-      "Dennis",
-      "Marc",
-      "Christian Gaas",
-      "Marco",
-      "Ali",
-      "Bianca",
-      "Kevin Leicht"
-    ],
-    "positions": [
-      "Counter",
-      "Service 1",
-      "Service 2",
-      "Service 3",
-      "Service 4",
-      "Service 5",
-      "Kueche 1",
-      "Reinigung"
-    ]
-  },
-  "availability": {
-    "2026-05": {
-      "Kevin": {
-        "2026-04-30": {
-          "status": "yes",
-          "from": "",
-          "to": "",
-          "note": ""
-        },
-        "2026-05-02": {
-          "status": "yes",
-          "from": "",
-          "to": "",
-          "note": ""
-        },
-        "2026-05-03": {
-          "status": "yes",
-          "from": "",
-          "to": "",
-          "note": ""
-        },
-        "2026-05-09": {
-          "status": "yes",
-          "from": "",
-          "to": "",
-          "note": ""
-        },
-        "2026-05-15": {
-          "status": "yes",
-          "from": "",
-          "to": "",
-          "note": ""
-        }
-      }
-    }
-  },
-  "schedules": {}
-}
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dienstplan App</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Teamplanung</p>
+        <h1 id="appTitle">Dienstplan</h1>
+      </div>
+      <div class="month-switcher">
+        <button id="prevMonth" class="icon-button" title="Vorheriger Monat">‹</button>
+        <input id="monthInput" type="month">
+        <button id="nextMonth" class="icon-button" title="Naechster Monat">›</button>
+      </div>
+    </header>
+
+    <main>
+      <nav class="tabs" aria-label="Bereiche">
+        <button class="tab active" data-tab="availability">Verfuegbarkeit</button>
+        <button class="tab" data-tab="published">Dienstplan</button>
+        <button class="tab" data-tab="admin">Planung</button>
+      </nav>
+
+      <section id="availability" class="panel active">
+        <div class="section-head">
+          <div>
+            <h2>Zeiten fuer den naechsten Monat eintragen</h2>
+            <p>Waehle deinen Namen und markiere pro Tag, wann du kannst.</p>
+          </div>
+          <button id="saveAvailability" class="primary">Speichern</button>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            Mitarbeiter
+            <select id="employeeSelect"></select>
+          </label>
+          <label>
+            Neuer Name
+            <input id="newEmployee" type="text" placeholder="Name eintragen">
+          </label>
+        </div>
+
+        <div id="availabilityGrid" class="calendar-grid"></div>
+      </section>
+
+      <section id="published" class="panel">
+        <div class="section-head">
+          <div>
+            <h2>Veroeffentlichter Dienstplan</h2>
+            <p id="publishedState">Noch kein Dienstplan geladen.</p>
+          </div>
+          <button id="printSchedule" class="secondary">Drucken</button>
+        </div>
+        <div id="publishedSchedule" class="schedule-list"></div>
+      </section>
+
+      <section id="admin" class="panel">
+        <div class="section-head">
+          <div>
+            <h2>Dienstplan erstellen und veroeffentlichen</h2>
+            <p>Admin-PIN eingeben, Verfuegbarkeiten pruefen und Dienste besetzen.</p>
+          </div>
+          <div class="admin-actions">
+            <input id="adminPin" type="password" placeholder="PIN">
+            <button id="saveDraft" class="secondary">Entwurf speichern</button>
+            <button id="publishSchedule" class="primary">Veroeffentlichen</button>
+          </div>
+        </div>
+
+        <details class="settings-box">
+          <summary>Einstellungen</summary>
+          <div class="form-grid">
+            <label>
+              Titel
+              <input id="businessName" type="text">
+            </label>
+            <label>
+              Neue Admin-PIN
+              <input id="newPin" type="password" placeholder="leer lassen = unveraendert">
+            </label>
+          </div>
+          <label>
+            Mitarbeiter, eine Person pro Zeile
+            <textarea id="employeesText" rows="5"></textarea>
+          </label>
+          <label>
+            Dienstbereiche, eine Position pro Zeile
+            <textarea id="positionsText" rows="4"></textarea>
+          </label>
+          <button id="saveSettings" class="secondary">Einstellungen speichern</button>
+        </details>
+
+        <div id="planner" class="planner"></div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
